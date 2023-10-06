@@ -2,13 +2,11 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    // Tell cargo to look for shared libraries in the specified directory
-    // println!("cargo:rustc-link-search=/path/to/lib");
+    bindgen();
+    build();
+}
 
-    // Tell cargo to tell rustc to link the system bzip2
-    // shared library.
-    // println!("cargo:rustc-link-lib=bz2");
-
+fn bindgen() {
     // Invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
 
@@ -19,6 +17,7 @@ fn main() {
         .allowlist_var("arm_.*")
         // Where to look for headers
         .clang_arg("-ICMSIS-DSP/Include")
+        .clang_arg("-ICMSIS_5/CMSIS/Core/Include")
         // Don't use the rust standard library
         .use_core()
         // Invalidate the built crate if any of the included header files change
@@ -31,4 +30,13 @@ fn main() {
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
+}
+
+fn build() {
+    let dst = cmake::Config::new(".").build_target("CMSISDSP").build();
+    println!(
+        "cargo:rustc-link-search=native={}/build/CMSIS-DSP/Source/",
+        dst.display()
+    );
+    println!("cargo:rustc-link-lib=static=CMSISDSP");
 }
