@@ -55,9 +55,8 @@ fn build() -> PathBuf {
     let mut config = cmake::Config::new(".");
     config.build_target("CMSISDSP");
     if is_crosscompile() {
-        // @TODO: This is a bit hacky.
-        //        We should probably set this sort of option up in a toolchain file.
-        config.define("CMAKE_EXE_LINKER_FLAGS", "--specs=nosys.specs");
+        config.define("CMAKE_C_COMPILER_WORKS", "1");
+        config.define("CMAKE_CXX_COMPILER_WORKS", "1");
     }
     let dst = config.build();
     println!(
