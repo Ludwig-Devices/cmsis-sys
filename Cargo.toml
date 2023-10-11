@@ -8,4 +8,7 @@ edition = "2021"
 [build-dependencies]
 bindgen = "0.68.1"
 # Fork is necessary pending merge of https://github.com/rust-lang/cmake-rs/pull/187
+cmake = "0.1"
+
+[patch.crates-io]
 cmake = { git = "https://github.com/frankplow/cmake-rs", branch = "system-name-generic" }
