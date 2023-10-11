@@ -1,10 +1,27 @@
 [package]
 name = "cmsis-sys"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Rust bindings for ARM CMSIS"
 repository = "https://github.com/Ludwig-Devices/cmsis-sys"
 license = "MIT"
+include = [
+    "src",
+    "Cargo.toml",
+    "build.rs",
+    "CMakeLists.txt",
+    "wrapper.h",
+    "CMSIS-DSP/LICENSE",
+    "CMSIS-DSP/CMakeLists.txt",
+    "CMSIS-DSP/Include",
+    "CMSIS-DSP/PrivateInclude",
+    "CMSIS-DSP/Source",
+    "CMSIS-DSP/LICENSE",
+    "CMSIS_5/LICENSE.txt",
+    "CMSIS_5/CMSIS/Core",
+    "picolibc/CMakeLists.txt",
+    "picolibc/newlib",
+]
 
 [dependencies]
 
