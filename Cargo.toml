@@ -2,6 +2,9 @@
 name = "cmsis-sys"
 version = "0.1.0"
 edition = "2021"
+description = "Rust bindings for ARM CMSIS"
+repository = "https://github.com/Ludwig-Devices/cmsis-sys"
+license = "MIT"
 
 [dependencies]
 
