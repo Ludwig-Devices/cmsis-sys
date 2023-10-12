@@ -1,6 +1,6 @@
 [package]
 name = "cmsis-sys"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 description = "Rust bindings for ARM CMSIS"
 repository = "https://github.com/Ludwig-Devices/cmsis-sys"
