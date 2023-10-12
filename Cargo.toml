@@ -22,6 +22,9 @@ include = [
     "picolibc/CMakeLists.txt",
     "picolibc/newlib",
     "picolibc/cmake",
+    "picolibc/picolibc.h.in",
+    "picolibc/picolibc.ld.in",
+    "picolibc/picolibc.specs.in",
 ]
 
 [dependencies]
